@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Virtual</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <h1>Tienda Virtual</h1>
+
+    <% if (!user) { %> 
+        <a href="/auth/google">
+            <button>Iniciar sesión con Google</button>
+        </a>
+    <% } else { %> 
+        <h2>Bienvenido, <%= user.displayName %>!</h2>
+        <a href="/logout">
+            <button>Cerrar sesión</button>
+        </a>
+
+        <h3>Productos Disponibles</h3>
+        <div id="product-list">
+            <% products.forEach(product => { %>
+                <div class="product">
+                    <h4><%= product.name %></h4>
+                    <p><%= product.description %></p>
+                    <p>Precio: $<%= product.price %></p>
+                    <button onclick="addToCart('<%= product._id %>', '<%= product.name %>', '<%= product.price %>')">Agregar al Carrito</button>
+                </div>
+            <% }) %>
+        </div>
+    <% } %>
+    
+    <h3>Carrito</h3>
+    <div id="cart">
+        <ul id="cart-items"></ul> <!-- Lista de productos en el carrito -->
+        <p id="cart-total">Total: $0.00</p> <!-- Total del carrito -->
+
+        <!-- Sección del cupón -->
+        <div id="coupon-section">
+            <input type="text" id="coupon-code" placeholder="Ingresa tu cupón de descuento">
+            <button onclick="applyCoupon()">Aplicar cupón</button>
+            <p id="coupon-message"></p> <!-- Mensaje de éxito o error del cupón -->
+        </div>
+
+        <button id="checkout-btn" style="display: none;" onclick="proceedToPayment()">Ir a Pagar</button>
+    </div>
+
+    <!-- Elemento Stripe para el pago -->
+    <div id="payment-section" style="margin-top: 20px;">
+        <h3>Pago</h3>
+        <div id="card-element"></div> <!-- Aquí se montará el input del pago con Stripe -->
+        <div id="card-errors" role="alert" style="color: red; margin-top: 10px;"></div> <!-- Errores de Stripe -->
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

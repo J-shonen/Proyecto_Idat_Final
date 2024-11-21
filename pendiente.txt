@@ -1,0 +1,46 @@
+los botones de agregar al carrito no funcionan
+configurar el stripe
+agregar
+
+1. Implementar el Carrito de Compras(LISTO)
+Frontend (HTML/JavaScript): Crear un carrito de compras en el frontend donde el usuario pueda agregar productos, ver los productos en el carrito, y calcular el total.
+Backend: Implementar rutas para manejar el carrito (por ejemplo, agregar productos al carrito, eliminar productos, y ver los productos actuales).
+Persistencia: Guardar el carrito en la sesión del usuario o en una base de datos si deseas que el carrito persista entre sesiones.
+
+
+2. Pasarela de Pago (Stripe)
+Frontend: Crear una interfaz para que el usuario pueda ingresar los detalles de pago.
+Backend: Integrar con la API de Stripe para procesar pagos.
+Confirmación de Pago: Después de que el pago sea procesado exitosamente, mostrar una página de confirmación y generar una orden de compra.
+
+
+3. Gestión de Productos (CRUD)
+Agregar Productos: Crear una interfaz de administración donde puedas agregar productos a la base de datos (con nombre, descripción, precio).
+Editar y Eliminar Productos: Implementar la capacidad de editar y eliminar productos de la tienda desde el backend.
+Rutas Protegidas: Asegúrate de que estas rutas de administración estén protegidas, para que solo los administradores o usuarios autenticados puedan acceder.
+
+
+4. Ordenes y Historial de Compras
+Backend: Crear una colección de "Órdenes" en MongoDB que almacene los productos comprados, el estado del pago, y la fecha de compra.
+Frontend: Crear una página para que los usuarios puedan ver su historial de compras.
+
+
+5. Autenticación de Usuarios
+Login con Google: Ya has integrado el login con Google, pero puedes extenderlo para incluir registros y login tradicionales (si lo deseas).
+Permisos de Usuario: Definir roles para los usuarios, como administrador y usuario regular, para dar acceso a diferentes secciones de la tienda.
+
+
+6. Mejorar la UI/UX
+Estilización: Usar CSS o frameworks como Bootstrap para hacer que la tienda luzca atractiva y sea fácil de usar.
+Responsividad: Asegurarte de que la tienda funcione bien en dispositivos móviles.
+
+
+7. Optimización del Rendimiento y Seguridad
+Validación de Datos: Asegúrate de validar los datos que se envían tanto desde el frontend como desde el backend para evitar posibles vulnerabilidades.
+Seguridad en el pago: Usa HTTPS para proteger las transacciones con Stripe.
+Autenticación de Usuarios: Implementa un manejo adecuado de sesiones y seguridad en las rutas protegidas.
+
+
+8. Pruebas y Despliegue
+Pruebas: Realizar pruebas de la aplicación para asegurarte de que todo funciona correctamente (por ejemplo, agregar productos al carrito, realizar pagos, etc.).
+Despliegue: Si todo está funcionando correctamente, puedes desplegar tu aplicación en un servicio de hosting, como Heroku, AWS, o cualquier servidor que soporte Node.js.
