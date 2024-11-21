@@ -2,7 +2,7 @@
 FROM node:18
 
 # Establece el directorio de trabajo dentro del contenedor
-WORKDIR /app
+WORKDIR /server
 
 # Copia el archivo de dependencias
 COPY package*.json ./
